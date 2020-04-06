@@ -27,6 +27,7 @@ String amigo = request.getParameter("amigo");
 
 
 String errorText = "";
+String result = "";
 
 boolean showForm = true;
 
@@ -39,6 +40,7 @@ if(login!=null){
 	boolean emailMatches = login.matches("\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*\\.\\w{2,4}");
 	boolean passwordValues = password.matches("(?=.*[0-9]{2,})(?=.*[a-z])(?=.*[A-Z]{2,}).{8,}");
 	boolean ageMatches = age.matches("-?\\d+(\\.\\d+)?");
+	
 	
 	if(login.length() == 0) {
 		existError = true;
@@ -99,6 +101,8 @@ if(login!=null){
 	
 	if(errorText.equals("<td width = 300><ul></ul></td>")){
 				showForm = false;
+				result = "Registration success";
+				
 	}
 }
 if (showForm){
@@ -220,8 +224,7 @@ out.write(errorText);
 </table>
 
 <%
-} else {
-	out.write("Registration Success");
-}
+} 
+	out.write(result);
 %>
 
